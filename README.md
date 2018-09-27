@@ -18,7 +18,6 @@ unzip /path/to/ubuntu.zip
 The current zipExclude file is within the tarfile.  Initial version:
 
 ```yaml
-~$ cat zipExclude
 .azure/cliextensions/*
 .azure/log/*
 .azure/telemetry/*
