@@ -27,7 +27,7 @@
     - name: Start .bashrc customisation
       lineinfile:
         path: ~richeney/.bashrc
-        line: ## Start of user customisation via Ansible
+        line: \## Start of user customisation via Ansible
 
     - name: Set PS1
       lineinfile:
