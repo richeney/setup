@@ -1,0 +1,55 @@
+---
+- hosts: localhost
+  connection: local
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Download bashrc customisation file
+      get_url:
+        url: file:///tmp/afile.txt
+        dest: /tmp/afilecopy.txt
+
+    - name: Base utility packages
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - figlet
+          - tree
+
+    - name: Start .bashrc customisation
+      lineinfile:
+        path: ~richeney/.bashrc
+        line: ## Start of user customisation via Ansible
+      lineinfile:
+        path: ~richeney/.bashrc
+        line: export PS1='\[\033[01;32m\]\w\[\033[01;33m\]$(__git_ps1 " (%s)") \[\033[01;37m\]\$ '
+
+    - name: Install jp
+      apt:
+        name: jp
+        state: present
+    - name: Set jq colours in .bashrc
+      lineinfile:
+        path: ~richeney/.bashrc
+        line: export JQ_COLORS="1;90:0;35:0;35:0;91:0;33:1;37:1;37"
+
+    - name: Install other cloud CLIs
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - awscli
+          - google-cloud-sdk
+    - name: Set gcloud to use python3
+      lineinfile:
+        path: ~richeney/.bashrc
+        line: export CLOUDSDK_PYTHON=python3
+
+  roles:
+    - role: az_cli

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+set -x
+
+ssh-keygen -m PEM -t rsa -b 4096
+
+sudo apt update && sudo apt full-upgrade -y
+sudo apt install python3-pip ansible
+
+umask 022
+
+cat << ANSIBLE_CFG > ~/.ansible.cfg
+[defaults]
+inventory = ~/ansible/hosts
+roles_path = ~/.ansible/roles
+deprecation_warnings=False
+nocows = 1
+ANSIBLE_CFG
+
+mkdir -pm 755 ~/ansible && cd ~/ansible
+
+cat << ANSIBLE_HOSTS > ~/ansible/hosts
+[localhost]
+127.0.0.1
+ANSIBLE_HOSTS
+
+## Switch requirements.yml abnd playbook.yml to curl downloads
+
+cat << ANSIBLE_REQS > ~/ansible/requirements.yml
+---
+- src: robertdebock.azure_cli
+  name: az_cli
+...
+ANSIBLE_REQS
+
+ansible-galaxy install -r requirements.yml
+
+## curl -H 'Cache-Control: no-cache' -sSL filename
+##
+## ansible-playbook playbook.yml --ask-become-pass
