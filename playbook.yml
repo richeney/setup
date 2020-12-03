@@ -43,19 +43,5 @@
         path: ~richeney/.bashrc
         line: export JQ_COLORS="1;90:0;35:0;35:0;91:0;33:1;37:1;37"
 
-    - name: Install other cloud CLIs
-      apt:
-        name: "{{ packages }}"
-        state: present
-        update_cache: yes
-      vars:
-        packages:
-          - awscli
-          - google-cloud-sdk
-    - name: Set gcloud to use python3
-      lineinfile:
-        path: ~richeney/.bashrc
-        line: export CLOUDSDK_PYTHON=python3
-
   roles:
-    - role: az_cli
+    - role: azure_cli

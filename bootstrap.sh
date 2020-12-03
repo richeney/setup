@@ -28,8 +28,8 @@ ANSIBLE_HOSTS
 
 cat << ANSIBLE_REQS > ~/ansible/requirements.yml
 ---
-- src: robertdebock.azure_cli
-  name: az_cli
+- src: https://github.com/richeney/ansible-role-azure-cli
+  name: azure_cli
 ...
 ANSIBLE_REQS
 
