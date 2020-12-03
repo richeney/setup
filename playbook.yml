@@ -24,15 +24,43 @@
           - figlet
           - tree
 
-    - name: Start .bashrc customisation
-      lineinfile:
-        path: ~richeney/.bashrc
-        line: \## Start of user customisation via Ansible
+    - name: Ansible .bashrc - jwt()
+      blockinfile:
+        path: ~/.bashrc
+        block: |
 
-    - name: Set PS1
-      lineinfile:
-        path: ~richeney/.bashrc
-        line: export PS1='\[\033[01;32m\]\w\[\033[01;33m\]$(__git_ps1 " (%s)") \[\033[01;37m\]\$ '
+          # Decode JWT tokens
+          _decode_base64_url() {
+            local len=$((${#1} % 4))
+            local result="$1"
+            if [ $len -eq 2 ]; then result="$1"'=='
+            elif [ $len -eq 3 ]; then result="$1"'='
+            fi
+            echo "$result" | tr '_-' '/+' | base64 -d
+          }
+
+          # $1 => JWT to decode
+          # $2 => either 1 for header or 2 for body (default is 2)
+          jwt() { _decode_base64_url $(echo -n $1 | cut -d "." -f ${2:-2}) | jq .; }
+
+        marker: "<!-- Ansible automated JWT function -->"
+        backup: yes
+
+    - name: Ansible .bashrc - user customisations
+      blockinfile:
+        path: ~/.bashrc
+        block: |
+
+          export PS1='\[\033[01;32m\]\w\[\033[01;33m\]$(__git_ps1 " (%s)") \[\033[01;37m\]\$ '
+
+          alias airs='az account set --subscription 2ca40be1-7e80-4f2b-92f7-06b2123a68cc; az account show'
+          alias vs='az account set --subscription 2d31be49-d959-4415-bb65-8aec2c90ba62; az account show'
+          alias re='clear'
+
+          export PATH=$PATH:/usr/local/go/bin:~/go/bin # Installed Go and docker and kind
+
+        marker: "<!-- Ansible automated user customisation -->"
+        backup: yes
 
     - name: Install jp
       apt:
