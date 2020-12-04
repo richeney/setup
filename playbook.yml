@@ -70,31 +70,6 @@
         marker_end: End
         backup: yes
 
-    - name: Sort out vi colours - ~/.vim/colors
-      file:
-        path: "~{{ ansible_user }}/.vim/colors"
-        owner: "{{ ansible_user }}"
-        group: "{{ ansible_user }}"
-        state: directory
-        mode: '0755'
-
-    - name: Sort out vi colours - cloudshell.vim
-      get_url:
-        url: "https://gist.githubusercontent.com/richeney/b1ca62ac3415be33651856da8a706884/raw/3375b6f1fab1a96cd4e5a345e9d75a9a5c65ce3c/cloudshell.vim"
-        dest: "~{{ ansible_user }}/.vim/colors/cloudshell.vim"
-        owner: "{{ ansible_user }}"
-        group: "{{ ansible_user }}"
-        mode: '0444'
-
-    - name: Sort out vi colours - ~/.vimrc
-      copy:
-        dest: "~{{ ansible_user }}/.vimrc"
-        owner: "{{ ansible_user }}"
-        group: "{{ ansible_user }}"
-        content: |
-          colo cloudshell
-          syntax on
-        mode: '0644'
-
   roles:
     - role: azure_cli
+    - role: wsl_colours
