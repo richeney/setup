@@ -1,5 +1,15 @@
 # To Add
 
+* Docker
+* Go
+* Kind
+
+* azcopy
+* dircolors
+* terraform
+* packer
+* vim
+
 ## Initialise Git ready for settings synced vscode use
 
 ```bash

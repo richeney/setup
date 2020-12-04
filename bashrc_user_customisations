@@ -1,0 +1,12 @@
+export EDITOR=vi
+export PS1='\[\033[01;32m\]\w\[\033[01;33m\]$(__git_ps1 " (%s)") \[\033[01;37m\]\$ '
+export PATH=$PATH:/usr/local/bin:/usr/local/go/bin:~/go/bin
+
+alias ll='ls -l'
+alias airs='az account set --subscription 2ca40be1-7e80-4f2b-92f7-06b2123a68cc; az account show'
+alias vs='az account set --subscription 2d31be49-d959-4415-bb65-8aec2c90ba62; az account show'
+alias re='clear'
+
+set -o vi
+
+export JQ_COLORS="1;90:0;35:0;35:0;91:0;33:1;37:1;37"

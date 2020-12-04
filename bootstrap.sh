@@ -2,7 +2,7 @@
 
 set -x
 
-ssh-keygen -m PEM -t rsa -b 4096
+[ ! -s ~/.ssh/id_rsa -o ! -s ~/.ssh/id_rsa.pub ] && ssh-keygen -m PEM -t rsa -b 4096
 
 sudo apt update && sudo apt full-upgrade -y
 sudo apt install python3-pip ansible
@@ -24,12 +24,14 @@ cat << ANSIBLE_HOSTS > ~/ansible/hosts
 127.0.0.1
 ANSIBLE_HOSTS
 
-## Switch requirements.yml abnd playbook.yml to curl downloads
+## Switch requirements.yml and playbook.yml to curl downloads
 
 cat << ANSIBLE_REQS > ~/ansible/requirements.yml
 ---
-- src: https://github.com/richeney/ansible-role-azure-cli
+- src: https://github.com/richeney/ansible-azure-cli
   name: azure_cli
+- src: https://github.com/richeney/ansible-wsl-colours
+  name: wsl_colours
 ...
 ANSIBLE_REQS
 
@@ -37,4 +39,4 @@ ansible-galaxy install -r requirements.yml
 
 curl -H 'Cache-Control: no-cache' -sSL https://raw.githubusercontent.com/richeney/ubuntu/master/playbook.yml?token=AF5565XVBPRK5SVT56GFWPK636M2M --output ~/ansible/playbook.yml
 
-ansible-playbook ~/ansible/playbook.yml --ask-become-pass
+ansible-playbook ~/ansible/playbook.yml
