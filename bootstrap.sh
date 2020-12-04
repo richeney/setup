@@ -5,7 +5,7 @@ set -x
 [ ! -s ~/.ssh/id_rsa -o ! -s ~/.ssh/id_rsa.pub ] && ssh-keygen -m PEM -t rsa -b 4096
 
 sudo apt update && sudo apt full-upgrade -y
-sudo apt install python3-pip ansible
+sudo apt install python3-pip ansible tree
 
 umask 022
 
@@ -40,4 +40,6 @@ ansible-galaxy install -r requirements.yml
 curl -H 'Cache-Control: no-cache' -sSOL https://raw.githubusercontent.com/richeney/ubuntu/master/playbook.yml
 curl -H 'Cache-Control: no-cache' -sSOL https://raw.githubusercontent.com/richeney/ubuntu/master/bashrc_user_customisations
 
-ansible-playbook ~/ansible/playbook.yml
+tree ~/.ansible/roles ~/ansible
+
+echo ansible-playbook ~/ansible/playbook.yml
