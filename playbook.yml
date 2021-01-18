@@ -27,6 +27,24 @@
           - tree
           - figlet
           - stress
+          - speedtest-cli
+          - hugo
+          - aha
+
+    - name: Git config - user.email
+      command: git config --global user.email richeney@microsoft.com
+
+    - name: Git config - user.name
+      command:
+      argv:
+        - git config --global user.name
+        - Richard Cheney
+
+    - name: Git config - credential.user
+      command: git config --global credential.user richeney
+
+    - name: Git config - credential.store
+      command: git config --global credential.helper store
 
     - name: Ansible .bashrc - root customisations
       blockinfile:

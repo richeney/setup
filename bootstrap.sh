@@ -12,7 +12,7 @@ umask 022
 cat << ANSIBLE_CFG > ~/.ansible.cfg
 [defaults]
 inventory = ~/ansible/hosts
-roles_path = ~/.ansible/roles
+roles_path = ~/ansible/roles
 deprecation_warnings=False
 nocows = 1
 ANSIBLE_CFG
@@ -40,6 +40,12 @@ ansible-galaxy install -r requirements.yml
 curl -H 'Cache-Control: no-cache' -sSOL https://raw.githubusercontent.com/richeney/ubuntu/master/playbook.yml
 curl -H 'Cache-Control: no-cache' -sSOL https://raw.githubusercontent.com/richeney/ubuntu/master/bashrc_user_customisations
 
-tree ~/.ansible/roles ~/ansible
+tree ~/ansible
 
-echo ansible-playbook ~/ansible/playbook.yml
+cat << INSTRUCTIONS
+
+Run:
+
+ansible-playbook ~/ansible/playbook.yml
+
+INSTRUCTIONS

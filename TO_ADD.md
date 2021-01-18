@@ -5,10 +5,47 @@
 * Kind
 
 * azcopy
+* helm
+* kubectl
 * dircolors ✅
 * terraform
 * packer
 * vim ✅
+* Create git and take list of git repos and clone
+
+# sql
+
+https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-2017
+
+But curl the 20.04 version
+
+## helm
+
+$ curl -O https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz
+$ tar -zxvf helm-v3.4.2-linux-amd64.tar.gz
+linux-amd64/
+linux-amd64/helm
+linux-amd64/README.md
+linux-amd64/LICENSE
+$ sudo mv linux-amd64/helm /usr/local/bin/helm
+$ sudo chmod 755 /usr/local/bin/helm
+$ sudo chown root:root /usr/local/bin
+
+## docker
+
+sudo apt install docker.io
+sudo service docker start
+sudo service docker status
+
+https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user
+sudo groupadd docker
+sudo usermod -aG docker $USER
+Log out and back in again
+docker run hello-world
+
+Fun containers to run interactively
+docker run -it inutano/cmatrix
+docker run -it jessfraz/hollywood
 
 ## Initialise Git ready for settings synced vscode use
 
