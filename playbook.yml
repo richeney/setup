@@ -7,6 +7,8 @@
   roles:
     - role: azure_cli
     - role: wsl_colours
+    - role: install_terraform
+    - role: install_packer
 
   tasks:
 

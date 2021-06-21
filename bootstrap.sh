@@ -32,6 +32,10 @@ cat << ANSIBLE_REQS > ~/ansible/requirements.yml
   name: azure_cli
 - src: https://github.com/richeney/ansible-wsl-colours
   name: wsl_colours
+- src: https://github.com/richeney/ansible-install-terraform
+  name: install_terraform
+- src: https://github.com/richeney/ansible-install-packer
+  name: install_packer
 ...
 ANSIBLE_REQS
 
