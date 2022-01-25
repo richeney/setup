@@ -109,3 +109,9 @@ export PATH="$PATH:/usr/local/go/bin:$GOBIN"
         path: ~richeney/.bashrc
         line: export CLOUDSDK_PYTHON=python3
 ```
+
+## Install hugo
+
+There will be an old version of hugo in the image. It's rubbish.
+
+<https://github.com/gohugoio/hugo/releases>
