@@ -41,8 +41,8 @@ ANSIBLE_REQS
 
 ansible-galaxy install -r requirements.yml
 
-curl -H 'Cache-Control: no-cache' -sSOL https://raw.githubusercontent.com/richeney/ubuntu/master/playbook.yml
-curl -H 'Cache-Control: no-cache' -sSOL https://raw.githubusercontent.com/richeney/ubuntu/master/bashrc_user_customisations
+curl -H 'Cache-Control: no-cache' -sSOL https://raw.githubusercontent.com/richeney/setup/master/playbook.yml
+curl -H 'Cache-Control: no-cache' -sSOL https://raw.githubusercontent.com/richeney/setup/master/bashrc_user_customisations
 
 tree ~/ansible
 

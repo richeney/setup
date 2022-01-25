@@ -1,4 +1,4 @@
-# 
+# Setup
 
 ## Ubuntu 20.04
 
@@ -15,7 +15,7 @@
     My personal bootstrap for a vanilla WSL2 installation of the Ubuntu 20.04 distro from the Microsoft Store.
 
     ```bash
-    bash <(curl -sSL https://raw.githubusercontent.com/richeney/ubuntu/master/bootstrap.sh)
+    bash <(curl -sSL https://raw.githubusercontent.com/richeney/setup/master/bootstrap.sh)
     ```
 
 ## Windows
@@ -27,7 +27,7 @@
     ```powershell
     winget settings
     ```
-    
+
 * Paste custom settings
 
     ```json
@@ -46,20 +46,23 @@
         }
     }
     ```
-    
- * Update source
- 
+
+* Update source
+
      ```powershell
      winget source update
      ```
-     
- * Install
+
+* Install
 
     ```powershell
+    winget install Git.Git
+    winget install GitHub.cli
     winget install "Visual Studio Code" --source msstore --accept-package-agreements
     winget install PowerToys --source msstore --accept-package-agreements
     winget install ShareX --source msstore --accept-package-agreements
     winget install EarTrumpet --source msstore --accept-package-agreements
+    winget install "NVIDIA Control Panel" --source msstore --accept-package-agreements
     winget install Nvidia.GeForceExperience
     winget install Logitech.GHUB
     winget install Logitech.LogiTune
@@ -70,17 +73,48 @@
     winget install "Amazon Prime" --accept-package-agreements
     winget install Disney+ --accept-package-agreements
     winget install Tidal --source msstore --accept-package-agreements
+    winget install --id Microsoft.Powershell --source winget
     ```
- 
-    They'll need configuring. 
- 
- * Modify Startup apps in settings
- * Update [Zorloo driver](https://www.zorloo.com/download)
-    
- ## Customisation
- 
- * Open the settings in Windows Terminal in JSON
- * Add the Relaxed theme
+
+    Most of these will require authentication credentials and/or further configuration.
+
+* Modify Startup apps in settings
+* Update [Zorloo driver](https://www.zorloo.com/download)
+
+## Add the Az module
+
+* Reopen Windows Terminal
+* Open PowerShell 7
+
+    ```powershell
+    pwsh
+    ```
+
+* Trust the PSGallery
+
+    ```powershell
+    Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+    ```
+
+* Install the module
+
+    ```powershell
+    Install-Module Az -Force
+    ```
+
+    There is usually an older version (e.g. 4.6.1) of the module installed.
+
+* Import the module
+
+    ```powershell
+    Import-Module Az
+    ```
+
+
+## Customisation
+
+* Open the settings in Windows Terminal in JSON
+* Add the Relaxed theme
 
     ```json
             {
