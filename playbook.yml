@@ -87,6 +87,7 @@
         /usr/bin/git config --global user.name "Richard Cheney"
         /usr/bin/git config --global credential.user richeney
         /usr/bin/git config --global credential.helper store
+        /usr/bin/git config --global init.defaultBranch main
         exit 0
       args: 
         creates: ~{{ ansible_user }}/.gitconfig
