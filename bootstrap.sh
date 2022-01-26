@@ -9,6 +9,8 @@ sudo apt install python3-pip ansible tree
 
 umask 022
 
+sudo touch ~/.bash_history && sudo chown $USER:$USER ~/.bash_history && chmod 644 ~/.bash_history
+
 cat << ANSIBLE_CFG > ~/.ansible.cfg
 [defaults]
 inventory = ~/ansible/hosts

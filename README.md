@@ -53,11 +53,12 @@
      winget source update
      ```
 
-* Install
+* Install software
 
     ```powershell
     winget install Git.Git
     winget install GitHub.cli
+    winget install "OneNote for Windows 10" --source msstore --accept-package-agreements
     winget install "Visual Studio Code" --source msstore --accept-package-agreements
     winget install PowerToys --source msstore --accept-package-agreements
     winget install ShareX --source msstore --accept-package-agreements
@@ -67,8 +68,6 @@
     winget install Logitech.GHUB
     winget install Logitech.LogiTune
     winget install Logitech.Options
-    winget install Netflix --accept-package-agreements
-    winget install Amazon Prime --accept-package-agreements
     winget install Netflix --accept-package-agreements
     winget install "Amazon Prime" --accept-package-agreements
     winget install Disney+ --accept-package-agreements
