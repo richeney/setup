@@ -56,23 +56,25 @@
 * Install software
 
     ```powershell
-    winget install Git.Git
-    winget install GitHub.cli
+    winget install "Git.Git"
+    winget install "GitHub.cli"
+    winget install "Microsoft.dotnetRuntime.6-x64"
+    winget install "Microsoft.VC++2015-2022Redist-x86" --silent
     winget install "OneNote for Windows 10" --source msstore --accept-package-agreements
     winget install "Visual Studio Code" --source msstore --accept-package-agreements
-    winget install PowerToys --source msstore --accept-package-agreements
-    winget install ShareX --source msstore --accept-package-agreements
-    winget install EarTrumpet --source msstore --accept-package-agreements
+    winget install "PowerToys" --source msstore --accept-package-agreements
+    winget install "ShareX" --source msstore --accept-package-agreements
+    winget install "EarTrumpet" --source msstore --accept-package-agreements
     winget install "NVIDIA Control Panel" --source msstore --accept-package-agreements
-    winget install Nvidia.GeForceExperience
-    winget install Logitech.GHUB
-    winget install Logitech.LogiTune
-    winget install Logitech.Options
-    winget install Netflix --accept-package-agreements
+    winget install "Nvidia.GeForceExperience"
+    winget install "Logitech.GHUB"
+    winget install "Logitech.LogiTune"
+    winget install "Logitech.Options"
+    winget install "Netflix" --accept-package-agreements
     winget install "Amazon Prime" --accept-package-agreements
-    winget install Disney+ --accept-package-agreements
-    winget install Tidal --source msstore --accept-package-agreements
-    winget install --id Microsoft.Powershell --source winget
+    winget install "Disney+" --accept-package-agreements
+    winget install "Tidal" --source msstore --accept-package-agreements
+    winget install "Microsoft.Powershell" --source winget
     ```
 
     Most of these will require authentication credentials and/or further configuration.
