@@ -13,6 +13,12 @@
 * vim ✅
 * Create git and take list of git repos and clone
 
+
+# Git
+
+sudo add-apt-repository ppa:git-core/ppa -y
+
+
 # sql
 
 https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools?view=sql-server-2017
