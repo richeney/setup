@@ -120,10 +120,10 @@
 
     ```json
             {
-                "background": "#353A44",
-                "black": "#151515",
+                "background": "#282828",
+                "black": "#282828",
                 "blue": "#6A8799",
-                "brightBlack": "#636363",
+                "brightBlack": "#616161",
                 "brightBlue": "#7EAAC7",
                 "brightCyan": "#ACBBD0",
                 "brightGreen": "#A0AC77",
