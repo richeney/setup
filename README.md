@@ -20,6 +20,8 @@
 
 ## Windows
 
+* Login to the Windows Store using your Microsodft ID
+* Update [winget](https://docs.microsoft.com/windows/package-manager/winget/)
 * Update [winget settings](https://aka.ms/winget-settings)
 
     Open PowerShell in Administrator mode.
@@ -41,7 +43,8 @@
         },
         "installBehavior": {
             "preferences": {
-                "scope": "user"
+                "scope": "user",
+                "locale": [ "en-GB", "en-US" ]
             }
         }
     }
@@ -56,18 +59,18 @@
 * Install software
 
     ```powershell
-    winget install "Git.Git"
+    winget install "Git.Git" --accept-source-agreements --accept-package-agreements
     winget install "GitHub.cli"
-    winget install "Microsoft.dotnetRuntime.6-x64" --silent
-    winget install "Microsoft.dotnetRuntime.5-x64" --silent
+    winget install "Microsoft.DotNet.Runtime.6" --silent
+    winget install "Microsoft.DotNet.Runtime.5" --silent
     winget install "Microsoft.VC++2015-2022Redist-x64" --silent
     winget install "OneNote for Windows 10" --source msstore --accept-package-agreements
     winget install "Visual Studio Code" --source msstore --accept-package-agreements
     winget install "PowerToys" --source msstore --accept-package-agreements
     winget install "ShareX" --source msstore --accept-package-agreements
-    winget install "EarTrumpet" --source msstore --accept-package-agreements
-    winget install "NVIDIA Control Panel" --source msstore --accept-package-agreements
-    winget install "Nvidia.GeForceExperience"
+    ## winget install "EarTrumpet" --source msstore --accept-package-agreements
+    ## winget install "NVIDIA Control Panel" --source msstore --accept-package-agreements
+    ## winget install "Nvidia.GeForceExperience"
     winget install "Logitech.GHUB"
     winget install "Logitech.LogiTune"
     winget install "Logitech.Options"
@@ -80,6 +83,7 @@
 
     Most of these will require authentication credentials and/or further configuration.
 
+* Go back into Windows Store, click on Library (bottom left) then Update All
 * Modify Startup apps in settings
 * Update [Zorloo driver](https://www.zorloo.com/download)
 
@@ -115,6 +119,11 @@
 
 ## Customisation
 
+* Settings
+    * Systems > Multi-Tasking
+        * Desktops - Show all open windows --> On all desktops
+        * Alt-Tab - Open Windows and 3 most recent tabs
+        * Title bar shake: toggle on
 * Open the settings in Windows Terminal in JSON
 * Add the Relaxed theme
 
