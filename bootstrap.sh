@@ -10,6 +10,7 @@ sudo apt install python3-pip ansible tree
 umask 022
 
 sudo touch ~/.bash_history && sudo chown $USER:$USER ~/.bash_history && chmod 644 ~/.bash_history
+sudo mkdir -m 755 /git && sudo chown $USER:$USER /git
 
 cat << ANSIBLE_CFG > ~/.ansible.cfg
 [defaults]

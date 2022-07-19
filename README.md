@@ -2,7 +2,7 @@
 
 ## Ubuntu 20.04
 
-* [Install WSL](https://aka.ms/installwsl2) 
+* [Install WSL](https://aka.ms/installwsl2)
 
     Open PowerShell in Administrator mode.
 
@@ -119,13 +119,14 @@
 
 ## Customisation
 
-* Settings
+* Settings in Windows 11
     * Systems > Multi-Tasking
         * Desktops - Show all open windows --> On all desktops
         * Alt-Tab - Open Windows and 3 most recent tabs
         * Title bar shake: toggle on
-* Open the settings in Windows Terminal in JSON
-* Add the Relaxed theme
+    * Bluetooth & Devices > Touchpad - set three finger gestures to switch desktops
+* Settings in Windows Terminal
+    * Add the Relaxed theme to the JSON
 
     ```json
             {
@@ -153,6 +154,10 @@
             }
     ```
 
+    * Settings
+        * Appearance - Use acrylic in the tab row - toggle on
+        * Default > Appearance - Color scheme = Relaxed
+
 ## Recover files from old WSL2 installs
 
 OK, so you've refreshed Windows and then remembered that you've lost a specific file or directory from your old WSL2 environment. Here's how to find the file and [mount it in WSL](https://docs.microsoft.com/windows/wsl/wsl2-mount-disk#mount-a-vhd-in-wsl).
@@ -176,15 +181,15 @@ This needs Hyper-V enabled.
 1. Find the old ext4.vhdx file
 
     ```powershell
-    Get-ChildItem -Path C:\Windows.old\Users\$([Environment]::UserName)\AppData\Local\Packages -Include ext4.vhdx -File -Recurse -ErrorAction SilentlyContinue 
+    Get-ChildItem -Path C:\Windows.old\Users\$([Environment]::UserName)\AppData\Local\Packages -Include ext4.vhdx -File -Recurse -ErrorAction SilentlyContinue
     ```
 
     Example output:
 
     ```text
-    
+
         Directory: C:\Windows.old\Users\richeney\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState
-    
+
     Mode                 LastWriteTime         Length Name
     ----                 -------------         ------ ----
     -a---          25/01/2022    09:24    34395389952 ext4.vhdx
@@ -226,7 +231,7 @@ This needs Hyper-V enabled.
     Example output
 
     ```text
-    
+
     DeviceID           Caption                    Partitions Size          Model
     --------           -------                    ---------- ----          -----
     \\.\PHYSICALDRIVE0 SAMSUNG MZVLB1T0HBLR-000MV 4          1024203640320 SAMSUNG MZVLB1T0HBLR-000MV
