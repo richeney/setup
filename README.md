@@ -68,6 +68,7 @@
     winget install "Visual Studio Code" --source msstore --accept-package-agreements
     winget install "PowerToys" --source msstore --accept-package-agreements
     winget install "ShareX" --source msstore --accept-package-agreements
+    winget install "PowerToys" --source msstore --accept-package-agreements
     ## winget install "EarTrumpet" --source msstore --accept-package-agreements
     ## winget install "NVIDIA Control Panel" --source msstore --accept-package-agreements
     ## winget install "Nvidia.GeForceExperience"
