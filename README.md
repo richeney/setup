@@ -60,7 +60,7 @@
 
     ```powershell
     winget install "Git.Git" --accept-source-agreements --accept-package-agreements
-    winget install "GitHub.cli"
+    winget install "GitHub.cli" --silent
     winget install "Microsoft.DotNet.Runtime.6" --silent
     winget install "Microsoft.DotNet.Runtime.5" --silent
     winget install "Microsoft.VC++2015-2022Redist-x64" --silent
