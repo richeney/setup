@@ -5,7 +5,7 @@ set -x
 [ ! -s ~/.ssh/id_rsa -o ! -s ~/.ssh/id_rsa.pub ] && ssh-keygen -m PEM -t rsa -b 4096
 
 sudo apt update && sudo apt full-upgrade -y
-sudo apt install python3-pip ansible tree
+sudo apt install python3-pip ansible tree -y
 
 umask 022
 
