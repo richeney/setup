@@ -13,6 +13,7 @@
 * vim ✅
 * Create git and take list of git repos and clone
 
+* import ShareX settings from a file?
 
 # Git
 
