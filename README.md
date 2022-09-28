@@ -20,7 +20,7 @@
 
 ## Windows
 
-* Login to the Windows Store using your Microsodft ID
+* ⚠️ **Login to the Windows Store using your Microsoft ID**
 * Update [winget](https://docs.microsoft.com/windows/package-manager/winget/)
 * Update [winget settings](https://aka.ms/winget-settings)
 
