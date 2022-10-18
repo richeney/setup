@@ -59,13 +59,14 @@
 * Install software
 
     ```powershell
-    winget install "Git.Git" --accept-source-agreements --accept-package-agreements
+    winget install "Git.Git" --accept-source-agreements --accept-package-agreements --silent
     winget install "GitHub.cli" --silent
     winget install "Microsoft.DotNet.Runtime.6" --silent
     winget install "Microsoft.DotNet.Runtime.5" --silent
     winget install "Microsoft.VC++2015-2022Redist-x64" --silent
     winget install "OneNote for Windows 10" --source msstore --accept-package-agreements
     winget install "Visual Studio Code" --source msstore --accept-package-agreements
+    winget install "Microsoft Remote Desktop" --source msstore --accept-package-agreements
     winget install "PowerToys" --source msstore --accept-package-agreements
     winget install "ShareX" --source msstore --accept-package-agreements
     winget install "PowerToys" --source msstore --accept-package-agreements
@@ -84,7 +85,12 @@
 
     Most of these will require authentication credentials and/or further configuration.
 
-* Go back into Windows Store, click on Library (bottom left) then Update All
+* Update all packages
+
+   ```powershell
+   winget upgrade --silent --all
+   ```
+
 * Modify Startup apps in settings
 * Update [Zorloo driver](https://www.zorloo.com/download)
 
