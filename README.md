@@ -70,7 +70,8 @@
     winget install "PowerToys" --source msstore --accept-package-agreements
     winget install "ShareX" --source msstore --accept-package-agreements
     winget install "PowerToys" --source msstore --accept-package-agreements
-    ## winget install "EarTrumpet" --source msstore --accept-package-agreements
+    winget install "Ambie" --source winget
+    winget install "EarTrumpet" --source msstore --accept-package-agreements
     ## winget install "NVIDIA Control Panel" --source msstore --accept-package-agreements
     ## winget install "Nvidia.GeForceExperience"
     winget install "Logitech.GHUB"
@@ -80,7 +81,7 @@
     winget install "Amazon Prime" --accept-package-agreements
     winget install "Disney+" --accept-package-agreements
     winget install "Tidal" --source msstore --accept-package-agreements
-    winget install "Microsoft.Powershell" --source winget
+    winget install "Microsoft.Powershell" ## --source winget
     ```
 
     Most of these will require authentication credentials and/or further configuration.
