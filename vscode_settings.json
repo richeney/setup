@@ -74,15 +74,21 @@
             "keys": "ctrl+q"
         }
     ],
+    "alwaysShowNotificationIcon": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+    "minimizeToNotificationArea": false,
     "profiles":
     {
         "defaults":
         {
             "colorScheme": "Relaxed",
-            "opacity": 60,
+            "font":
+            {
+                "face": "Cascadia Mono"
+            },
+            "opacity": 85,
             "scrollbarState": "hidden",
             "useAcrylic": true
         },
@@ -126,7 +132,9 @@
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": false,
                 "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl"
+                "source": "Windows.Terminal.Wsl",
+                "tabTitle": "Ubuntu",
+                "useAcrylic": true
             }
         ]
     },
