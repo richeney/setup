@@ -47,7 +47,7 @@
 
     - name: Ansible .bashrc - jwt()
       blockinfile:
-        path: ~{{ ansible_user_id }}/.bashrc
+        path: ~richeney/.bashrc
         block: |
           {% raw %}
           # Decode JWT tokens
@@ -72,7 +72,7 @@
 
     - name: Ansible .bashrc - user customisations
       blockinfile:
-        path: ~{{ ansible_user_id }}/.bashrc
+        path: ~richeney/.bashrc
         block: "{{ lookup('file', 'bashrc_user_customisations') }}"
         marker: "# <!-- {mark} of Ansible automated user customisations -->"
         marker_begin: Start
@@ -80,14 +80,17 @@
         backup: yes
 
     - name: Git config
-      become: true
-      become_user: richeney
-      shell: |
-        /usr/bin/git config --global user.email richeney@microsoft.com
-        /usr/bin/git config --global user.name "Richard Cheney"
-        /usr/bin/git config --global credential.user richeney
-        /usr/bin/git config --global credential.helper store
-        /usr/bin/git config --global init.defaultBranch main
-        exit 0
-      args:
-        creates: ~{{ ansible_user_id }}/.gitconfig
+      ansible.builtin.copy:
+        dest: ~richeney/.gitconfig
+        owner: richeney
+        group: richeney
+        mode: 0644
+        content: |
+          [user]
+            email = richeney@microsoft.com
+            name = Richard Cheney
+          [credential]
+            user = richeney
+            helper = store
+          [init]
+            defaultBranch = main
