@@ -4,11 +4,13 @@
 
 * [Install WSL](https://aka.ms/installwsl2)
 
-    Open PowerShell in Administrator mode.
+    Open PowerShell in Administrator mode. (`Win`+`X`)
 
     ```powershell
     wsl --install
     ```
+
+    Will need a reboot.
 
 * Customise
 
@@ -21,14 +23,19 @@
 ## Windows
 
 * ⚠️ **Login to the Windows Store using your Microsoft ID**
-* Update [winget](https://docs.microsoft.com/windows/package-manager/winget/)
+* Install [App Installer](https://www.microsoft.com/p/app-installer/9nblggh4nns1#activetab=pivot:overviewtab)
+
+    This includes the production version of winget. ([Alternative installs](https://docs.microsoft.com/windows/package-manager/winget/).)
+
 * Update [winget settings](https://aka.ms/winget-settings)
 
-    Open PowerShell in Administrator mode.
+    PowerShell in Administrator mode.
 
     ```powershell
     winget settings
     ```
+
+    And choose Notepad, just this once.
 
 * Paste custom settings
 
@@ -56,6 +63,30 @@
      winget source update
      ```
 
+* List installed apps
+
+   ```powershell
+   winget list
+   ```
+
+* Uninstall apps
+
+    ```powershell
+    winget uninstall "Cortana"
+    winget uninstall "MSN Weather"
+    winget uninstall "Solitaire & Casual Games"
+    winget uninstall "Mixed Reality Portal"
+    winget uninstall "Skype"
+    winget uninstall "Windows Maps"
+    winget uninstall "Xbox Game Bar Plugin" ## the overlay conflicts with the mic
+    winget uninstall "Xbox Game Bar"
+    winget uninstall "Microsoft OneNote - en-gb" = removing all of office?
+    ## winget uninstall MicrosoftTeams_8wekyb3d8bbwe
+    ## winget uninstall Microsoft.Teams
+    winget uninstall "Mail and Calendar"
+    winget uninstall "Teams Machine-Wide Installer"
+    ```
+
 * Install software
 
     ⚠️ Check the desktop - Reset my PC now adds a list of the software that was lost. Update the winget list below.
@@ -66,7 +97,8 @@
     winget install "Microsoft.DotNet.Runtime.6" --silent
     winget install "Microsoft.DotNet.Runtime.5" --silent
     winget install "Microsoft.VC++2015-2022Redist-x64" --silent
-    winget install "OneNote for Windows 10" --source msstore --accept-package-agreements
+    ## winget install "OneNote" --source msstore --accept-package-agreements
+    ## The command above seems to download all of Office
     winget install "Visual Studio Code" --source msstore --accept-package-agreements
     winget install "Microsoft Remote Desktop" --source msstore --accept-package-agreements
     winget install "PowerToys" --source msstore --accept-package-agreements
@@ -126,17 +158,32 @@
     Import-Module Az
     ```
 
-
 ## Customisation
 
 * Settings in Windows 11
-    * Systems > Multi-Tasking
-        * Desktops - Show all open windows --> On all desktops
-        * Alt-Tab - Open Windows and 3 most recent tabs
-        * Title bar shake: toggle on
-    * Bluetooth & Devices > Touchpad - set three finger gestures to switch desktops
-* Settings in Windows Terminal
-    * Add the Relaxed theme to the JSON
+  * Systems > Multi-Tasking
+    * Desktops - Show all open windows --> On all desktops
+    * Alt-Tab - Open Windows and 3 most recent tabs
+    * Title bar shake: toggle on
+  * Bluetooth & Devices > Touchpad - set three finger gestures to switch desktops
+
+## Settings in Windows Terminal
+
+In lieu of [roaming settings.json](https://github.com/microsoft/terminal/issues/2933).
+
+* actions array
+
+    ```json
+    [{"command":"find","keys":"ctrl+shift+f"},{"command":"paste","keys":"ctrl+v"},{"command":{"action":"copy","singleLine":false},"keys":"ctrl+c"},{"command":{"action":"splitPane","split":"auto","splitMode":"duplicate"},"keys":"alt+shift+d"}]
+    ```
+
+* profiles.defaults object
+
+    ```json
+    {"colorScheme":"Relaxed","font":{"face":"Cascadia Mono"},"opacity":85,"scrollbarState":"hidden","useAcrylic":true        }
+    ```
+
+* Add the Relaxed theme to the JSON
 
     ```json
             {
@@ -164,9 +211,7 @@
             }
     ```
 
-    * Settings
-        * Appearance - Use acrylic in the tab row - toggle on
-        * Default > Appearance - Color scheme = Relaxed
+* Re-prettify with  `CTRL`+`ALT`+`M` if you have JSON Tools in vscode.
 
 ## Finishing up
 
