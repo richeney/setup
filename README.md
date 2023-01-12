@@ -58,6 +58,8 @@
 
 * Install software
 
+    ⚠️ Check the desktop - Reset my PC now adds a list of the software that was lost. Update the winget list below.
+
     ```powershell
     winget install "Git.Git" --accept-source-agreements --accept-package-agreements --silent
     winget install "GitHub.cli" --silent
