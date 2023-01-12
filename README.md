@@ -111,6 +111,7 @@
     winget install "Logitech.GHUB"
     winget install "Logitech.LogiTune"
     winget install "Logitech.Options"
+    winget install "HP Smart" --source msstore --accept-package-agreements
     winget install "Netflix" --accept-package-agreements
     winget install "Amazon Prime" --accept-package-agreements
     winget install "Disney+" --accept-package-agreements
