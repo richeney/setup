@@ -8,8 +8,8 @@
 * helm
 * kubectl
 * dircolors ✅
-* terraform
-* packer
+* terraform ✅
+* packer ✅
 * vim ✅
 * Create git and take list of git repos and clone
 

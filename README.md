@@ -14,7 +14,7 @@
 
 * Customise
 
-    My personal bootstrap for a vanilla WSL2 installation of the Ubuntu 20.04 distro from the Microsoft Store.
+    My personal bootstrap for a vanilla WSL2 installation of the Ubuntu 22.04 distro from the Microsoft Store.
 
     ```bash
     bash <(curl -sSL https://raw.githubusercontent.com/richeney/setup/master/bootstrap.sh)

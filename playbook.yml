@@ -1,8 +1,8 @@
 ---
 - hosts: localhost
   connection: local
-  become: yes
-  gather_facts: yes
+  become: true
+  gather_facts: true
 
   roles:
     - role: azure_cli
@@ -47,7 +47,7 @@
 
     - name: Ansible .bashrc - jwt()
       blockinfile:
-        path: ~{{ ansible_user }}/.bashrc
+        path: ~{{ ansible_user_id }}/.bashrc
         block: |
           {% raw %}
           # Decode JWT tokens
@@ -72,14 +72,14 @@
 
     - name: Ansible .bashrc - user customisations
       blockinfile:
-        path: ~{{ ansible_user }}/.bashrc
+        path: ~{{ ansible_user_id }}/.bashrc
         block: "{{ lookup('file', 'bashrc_user_customisations') }}"
         marker: "# <!-- {mark} of Ansible automated user customisations -->"
         marker_begin: Start
         marker_end: End
         backup: yes
 
-    - name: Git config 
+    - name: Git config
       become: true
       become_user: richeney
       shell: |
@@ -89,6 +89,5 @@
         /usr/bin/git config --global credential.helper store
         /usr/bin/git config --global init.defaultBranch main
         exit 0
-      args: 
-        creates: ~{{ ansible_user }}/.gitconfig
-      
+      args:
+        creates: ~{{ ansible_user_id }}/.gitconfig
