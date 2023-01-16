@@ -1,18 +1,23 @@
 ---
 - hosts: localhost
   connection: local
-  become: true
+  become: false
   gather_facts: true
 
   roles:
     - role: azure_cli
+      become: true
+    - role: terraform
+      become: true
+    - role: packer
+      become: true
     - role: wsl_colours
-    - role: install_terraform
-    - role: install_packer
+      become: false
 
   tasks:
 
     - name: Enable passwordless sudo
+      become: true
       ansible.builtin.lineinfile:
         path: /etc/sudoers
         state: present
@@ -21,6 +26,7 @@
         validate: 'visudo -cf %s'
 
     - name: Base utility packages
+      become: true
       ansible.builtin.apt:
         name: "{{ packages }}"
         state: present
@@ -38,6 +44,7 @@
           - aha
 
     - name: Ansible .bashrc - root customisations
+      become: true
       ansible.builtin.blockinfile:
         path: ~/.bashrc
         block: |
@@ -80,6 +87,7 @@
         backup: yes
 
     - name: /git/untrusted
+      become: true
       ansible.builtin.file:
         path: /git/untrusted
         state: directory
