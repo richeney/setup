@@ -20,6 +20,20 @@
     bash <(curl -sSL https://raw.githubusercontent.com/richeney/setup/master/bootstrap.sh)
     ```
 
+* Oh My Posh
+
+   ```bash
+    sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+    sudo chmod +x /usr/local/bin/oh-my-posh
+    mkdir ~/.poshthemes
+    wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
+    unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
+    chmod u+rw ~/.poshthemes/*.omp.*
+    rm ~/.poshthemes/themes.zip
+    wget https://raw.githubusercontent.com/richeney/setup/master/azurecitadel.omp.json -O ~/.poshthemes/azurecitadel.omp.json
+    ```
+
+
 ## Windows
 
 * ⚠️ **Login to the Windows Store using your Microsoft ID**

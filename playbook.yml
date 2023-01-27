@@ -42,6 +42,7 @@
           - speedtest-cli
           - hugo
           - aha
+          - unzip
 
     - name: Ansible .bashrc - root customisations
       become: true

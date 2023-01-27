@@ -1,5 +1,8 @@
-export EDITOR=vi
 export PS1='\[\033[01;32m\]\w\[\033[01;33m\]$(__git_ps1 " (%s)") \[\033[01;37m\]\$ '
+if [[ -x /usr/local/bin/oh-my-posh && -s ~/.poshthemes/azurecitadel.omp.json ]]; then
+  eval $(oh-my-posh init bash --config ~/.poshthemes/azurecitadel.omp.json); fi
+
+export EDITOR=vi
 export PATH=$PATH:/usr/local/bin:/usr/local/go/bin:~/go/bin
 
 alias ll='ls -l'
