@@ -19,7 +19,7 @@
     - name: Enable passwordless sudo
       become: true
       ansible.builtin.lineinfile:
-        path: /etc/sudoers
+        path: /etc/sudoers.d/group
         state: present
         regexp: '^%sudo'
         line: '%sudo ALL=(ALL) NOPASSWD: ALL'
