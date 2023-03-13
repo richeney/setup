@@ -130,7 +130,7 @@
     winget install "Amazon Prime" --accept-package-agreements
     winget install "Disney+" --accept-package-agreements
     winget install "Tidal" --source msstore --accept-package-agreements
-    winget install "Microsoft.Powershell" ## --source winget
+    winget install --id Microsoft.Powershell --source winget
     ```
 
     Most of these will require authentication credentials and/or further configuration.
