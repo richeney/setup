@@ -187,7 +187,7 @@ In lieu of [roaming settings.json](https://github.com/microsoft/terminal/issues/
 * actions array
 
     ```json
-    [{"command":{"action":"copy","singleLine":false},"keys":"ctrl+c"},{"command":"paste","keys":"ctrl+v"},{"command":"find","keys":"ctrl+f"},{"command":{"action":"splitPane","split":"auto","splitMode":"duplicate"},"keys":"alt+shift+d"},{"command":"toggleFocusMode","keys":"ctrl+shift+f"}]
+    [{"command":{"action":"copy","singleLine":false},"keys":"ctrl+c"},{"command":"paste","keys":"ctrl+v"},{"command":"find","keys":"ctrl+shift+f"},{"command":{"action":"splitPane","split":"auto","splitMode":"duplicate"},"keys":"alt+shift+d"},{"command":"toggleFocusMode","keys":"ctrl+f"}]
     ```
 
 * profiles.defaults object
