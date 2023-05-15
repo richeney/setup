@@ -7,6 +7,7 @@ export PATH=$PATH:/usr/local/bin:/usr/local/go/bin:~/go/bin
 
 alias ll='ls -l'
 alias re='clear'
+alias kc='kubectl'
 
 title() {
  echo -ne "\033]0;${1:-${PWD##*/}}\a"
