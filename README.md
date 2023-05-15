@@ -108,17 +108,15 @@
     ```powershell
     winget install "Git.Git" --accept-source-agreements --accept-package-agreements --silent
     winget install "GitHub.cli" --silent
-    winget install "Microsoft.DotNet.Runtime.6" --silent
-    winget install "Microsoft.DotNet.Runtime.5" --silent
-    winget install "Microsoft.VC++2015-2022Redist-x64" --silent
-    ## winget install "OneNote" --source msstore --accept-package-agreements
-    ## The command above seems to download all of Office
+    ## winget install "Microsoft.DotNet.Runtime.6" --silent
+    ## winget install "Microsoft.DotNet.Runtime.5" --silent
+    ## winget install "Microsoft.VC++2015-2022Redist-x64" --silent
     winget install "Visual Studio Code" --source msstore --accept-package-agreements
     winget install "Microsoft Remote Desktop" --source msstore --accept-package-agreements
     winget install "PowerToys" --source msstore --accept-package-agreements
-    winget install "ShareX" --source msstore --accept-package-agreements
+    ## winget install "ShareX" --source msstore --accept-package-agreements
     winget install "PowerToys" --source msstore --accept-package-agreements
-    winget install "Ambie" --source winget
+    ## winget install "Ambie" --source winget
     winget install "EarTrumpet" --source msstore --accept-package-agreements
     ## winget install "NVIDIA Control Panel" --source msstore --accept-package-agreements
     ## winget install "Nvidia.GeForceExperience"
