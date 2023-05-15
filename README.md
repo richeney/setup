@@ -94,7 +94,7 @@
     winget uninstall "Windows Maps"
     winget uninstall "Xbox Game Bar Plugin" ## the overlay conflicts with the mic
     winget uninstall "Xbox Game Bar"
-    winget uninstall "Microsoft OneNote - en-gb" = removing all of office?
+    ## winget uninstall "Microsoft OneNote - en-gb" # removing all of office?
     ## winget uninstall MicrosoftTeams_8wekyb3d8bbwe
     ## winget uninstall Microsoft.Teams
     winget uninstall "Mail and Calendar"
