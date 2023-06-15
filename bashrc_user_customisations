@@ -8,6 +8,8 @@ export PATH=$PATH:/usr/local/bin:/usr/local/go/bin:~/go/bin
 alias ll='ls -l'
 alias re='clear'
 alias kc='kubectl'
+alias airs='az account set --subscription 9b7a166a-267f-45a5-b480-7a04cfc1edf6; az account show'
+alias vs='az account set --subscription 44fd970a-dba0-47fd-a551-4a5e692efdeb; az account show'
 
 title() {
  echo -ne "\033]0;${1:-${PWD##*/}}\a"
