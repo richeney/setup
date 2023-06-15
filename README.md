@@ -109,6 +109,7 @@
     ```powershell
     winget install "Git.Git" --accept-source-agreements --accept-package-agreements --silent
     winget install "GitHub.cli" --silent
+    winget install --exact --id "Microsoft.AzureCLI" --silent
     ## winget install "Microsoft.DotNet.Runtime.6" --silent
     ## winget install "Microsoft.DotNet.Runtime.5" --silent
     ## winget install "Microsoft.VC++2015-2022Redist-x64" --silent
