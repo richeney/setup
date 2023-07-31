@@ -91,10 +91,10 @@
         marker_end: End
         backup: yes
 
-    - name: /git/untrusted
+    - name: /git
       become: true
       ansible.builtin.file:
-        path: /git/untrusted
+        path: /git
         state: directory
         mode: '0755'
         owner: richeney
