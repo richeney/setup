@@ -22,7 +22,9 @@
 
 * Oh My Posh
 
-   ```bash
+    *Not working?*
+
+    ```bash
     sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
     sudo chmod +x /usr/local/bin/oh-my-posh
     mkdir ~/.poshthemes
@@ -195,7 +197,7 @@ In lieu of [roaming settings.json](https://github.com/microsoft/terminal/issues/
 * profiles.defaults object
 
     ```json
-    {"colorScheme":"Relaxed","font":{"face":"Cascadia Mono"},"opacity":85,"scrollbarState":"hidden","useAcrylic":true        }
+    {"colorScheme":"Relaxed","font":{"face":"Cascadia Mono"},"opacity":85,"scrollbarState":"hidden","useAcrylic":true}
     ```
 
 * Add the Relaxed theme to the JSON
