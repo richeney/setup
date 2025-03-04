@@ -38,6 +38,8 @@ cat << ANSIBLE_REQS > ~/ansible/requirements.yml
   name: terraform
 - src: https://github.com/richeney/ansible-install-packer
   name: packer
+- src: https://github.com/richeney/ansible-install-wslu
+  name: wslu
 ...
 ANSIBLE_REQS
 

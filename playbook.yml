@@ -11,6 +11,8 @@
       become: true
     - role: packer
       become: true
+    - role: wslu
+      become: true
     - role: wsl_colours
       become: false
 
