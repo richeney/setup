@@ -88,20 +88,20 @@
 * Uninstall apps
 
     ```powershell
-    winget uninstall "Cortana"
+    ## winget uninstall "Cortana"
     winget uninstall "MSN Weather"
     winget uninstall "Solitaire & Casual Games"
-    winget uninstall "Mixed Reality Portal"
-    winget uninstall "Skype"
-    winget uninstall "Windows Maps"
-    winget uninstall "Xbox Game Bar Plugin" ## the overlay conflicts with the mic
-    winget uninstall "Xbox Game Bar"
-    winget uninstall "OneNote for Windows 10"
+    ## winget uninstall "Mixed Reality Portal"
+    ## winget uninstall "Skype"
+    ## winget uninstall "Windows Maps"
+    ## winget uninstall "Xbox Game Bar Plugin" ## the overlay conflicts with the mic
+    ## winget uninstall "Xbox Game Bar"
+    ## winget uninstall "OneNote for Windows 10"
     ## winget uninstall "Microsoft OneNote - en-gb" # removing all of office?
     ## winget uninstall MicrosoftTeams_8wekyb3d8bbwe
     ## winget uninstall Microsoft.Teams
-    winget uninstall "Mail and Calendar"
-    winget uninstall "Teams Machine-Wide Installer"
+    ## winget uninstall "Mail and Calendar"
+    ## winget uninstall "Teams Machine-Wide Installer"
     ```
 
 * Install software
@@ -116,15 +116,14 @@
     ## winget install "Microsoft.DotNet.Runtime.5" --silent
     ## winget install "Microsoft.VC++2015-2022Redist-x64" --silent
     winget install --exact --id XP9KHM4BK9FZ7Q --source msstore --accept-package-agreements # Visual Studio Code
-    winget install "Microsoft Remote Desktop" --source msstore --accept-package-agreements
+    ## winget install "Microsoft Remote Desktop" --source msstore --accept-package-agreements
     winget install "PowerToys" --source msstore --accept-package-agreements
     ## winget install "ShareX" --source msstore --accept-package-agreements
-    winget install "PowerToys" --source msstore --accept-package-agreements
     ## winget install "Ambie" --source winget
-    winget install "EarTrumpet" --source msstore --accept-package-agreements
+    ## winget install "EarTrumpet" --source msstore --accept-package-agreements
     ## winget install "NVIDIA Control Panel" --source msstore --accept-package-agreements
     ## winget install "Nvidia.GeForceExperience"
-    winget install "Logitech.GHUB"
+    ## winget install "Logitech.GHUB"
     winget install "Logitech.LogiTune"
     winget install "Logitech.Options"
     winget install "HP Smart" --source msstore --accept-package-agreements
