@@ -131,6 +131,7 @@
     winget install "Amazon Prime" --accept-package-agreements
     winget install "Disney+" --accept-package-agreements
     winget install "Tidal" --source msstore --accept-package-agreements
+    winget install --exact --id 9NKSQGP7F2NH --source msstore --accept-package-agreements # WhatsApp
     winget install --id Microsoft.Powershell --source winget
     ```
 
