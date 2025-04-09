@@ -230,6 +230,21 @@ In lieu of [roaming settings.json](https://github.com/microsoft/terminal/issues/
 
 * Re-prettify with  `CTRL`+`ALT`+`M` if you have JSON Tools in vscode.
 
+## PowerShell in WSL2 with ARM64
+
+This is for the Snapdragon Surface Laptop 7
+
+Based on [](https://learn.microsoft.com/en-us/powershell/scripting/install/install-other-linux?view=powershell-7.5#binary-archives) and
+
+```shell
+# Download the powershell '.tar.gz' archive from https://github.com/PowerShell/PowerShell/releases
+curl -L -o /tmp/powershell.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v7.5.0/powershell-7.5.0-linux-arm64.tar.gz
+sudo mkdir -p /opt/microsoft/powershell/7
+sudo tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7
+sudo chmod +x /opt/microsoft/powershell/7/pwsh
+sudo ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+```
+
 ## Finishing up
 
 OK, should be done. Perhaps some authentication to do within the winget installed apps, but nothing major.
