@@ -191,16 +191,23 @@ In lieu of [roaming settings.json](https://github.com/microsoft/terminal/issues/
 * actions array
 
     ```json
-    [{"command":{"action":"copy","singleLine":false},"keys":"ctrl+c"},{"command":"paste","keys":"ctrl+v"},{"command":"find","keys":"ctrl+shift+f"},{"command":{"action":"splitPane","split":"auto","splitMode":"duplicate"},"keys":"alt+shift+d"},{"command":"toggleFocusMode","keys":"ctrl+f"}]
+    [{"command":{"action":"copy","singleLine":false},"id":"User.copy.644BA8F2"},{"command":"paste","id":"User.paste"},{"command":"toggleFocusMode","id":"User.toggleFocusMode"},{"command":"find","id":"User.find"},{"command":{"action":"splitPane","split":"auto","splitMode":"duplicate"},"id":"User.splitPane.A6751878"},{"command":{"action":"globalSummon","toggleVisibility":true,"desktop":"toCurrent","monitor":"toMouse","dropdownDuration":0},"id":"User.globalSummon.51A3D78C"}]
+    ```
+
+* keybindings
+
+    ```json
+    [{"id":"User.toggleFocusMode","keys":"ctrl+alt+f"},{"id":"User.copy.644BA8F2","keys":"ctrl+c"},{"id":"User.globalSummon.51A3D78C","keys":"win+sc(41)"},{"id":"User.find","keys":"ctrl+shift+f"},{"id":"User.paste","keys":"ctrl+v"},{"id":"User.splitPane.A6751878","keys":"alt+shift+d"}]
     ```
 
 * profiles.defaults object
 
     ```json
-    {"colorScheme":"Relaxed","font":{"face":"Cascadia Mono"},"opacity":85,"scrollbarState":"hidden","useAcrylic":true}
+    {"antialiasingMode":"cleartype","closeOnExit":"graceful","colorScheme":"Relaxed","cursorShape":"bar","font":{"face":"Ubuntu Mono","size":14,"weight":"normal"},"padding":"12","scrollbarState":"hidden","useAcrylic":true}
+    ```
     ```
 
-* Add the Relaxed theme to the JSON
+* Add the Relaxed color scheme into the JSON (within Schemes)
 
     ```json
             {
