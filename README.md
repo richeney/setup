@@ -252,6 +252,15 @@ sudo chmod +x /opt/microsoft/powershell/7/pwsh
 sudo ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 ```
 
+## Bicep in WSL2 on ARM64
+
+```shell
+mkdir ~/.azure/bin && cd ~/.azure/bin
+wget https://github.com/Azure/bicep/releases/latest/download/bicep-linux-arm64 -O bicep && chmod +x bicep
+```
+
+Then add the directory to your path.
+
 ## Finishing up
 
 OK, should be done. Perhaps some authentication to do within the winget installed apps, but nothing major.
