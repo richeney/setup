@@ -26,20 +26,13 @@ cat << ANSIBLE_HOSTS > ~/ansible/hosts
 127.0.0.1
 ANSIBLE_HOSTS
 
-## Switch requirements.yml and playbook.yml to curl downloads
+## Download playbook and customisations
+## wsl_colours role is still needed
 
 cat << ANSIBLE_REQS > ~/ansible/requirements.yml
 ---
-- src: https://github.com/richeney/ansible-azure-cli
-  name: azure_cli
 - src: https://github.com/richeney/ansible-wsl-colours
   name: wsl_colours
-- src: https://github.com/richeney/ansible-install-terraform
-  name: terraform
-- src: https://github.com/richeney/ansible-install-packer
-  name: packer
-- src: https://github.com/richeney/ansible-install-wslu
-  name: wslu
 ...
 ANSIBLE_REQS
 
