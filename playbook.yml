@@ -81,16 +81,18 @@
 
     # wslu - WSL Utilities
     # https://github.com/wslutilities/wslu
-    - name: Add wslu PPA key
+    - name: Download and install wslu GPG key
       become: true
-      ansible.builtin.apt_key:
-        url: "https://pkg.wslutiliti.es/public.key"
-        state: present
+      ansible.builtin.shell: |
+        curl -fsSL https://pkg.wslutiliti.es/public.key | gpg --dearmor -o /usr/share/keyrings/wslu-archive-keyring.gpg
+        chmod go+r /usr/share/keyrings/wslu-archive-keyring.gpg
+      args:
+        creates: /usr/share/keyrings/wslu-archive-keyring.gpg
 
     - name: Add wslu repository
       become: true
       ansible.builtin.apt_repository:
-        repo: "deb https://pkg.wslutiliti.es/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main"
+        repo: "deb [signed-by=/usr/share/keyrings/wslu-archive-keyring.gpg] https://pkg.wslutiliti.es/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main"
         state: present
         filename: wslu
 
