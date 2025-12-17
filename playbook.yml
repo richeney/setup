@@ -5,18 +5,110 @@
   gather_facts: true
 
   roles:
-    - role: azure_cli
-      become: true
-    - role: terraform
-      become: true
-    - role: packer
-      become: true
-    - role: wslu
-      become: true
     - role: wsl_colours
       become: false
 
   tasks:
+
+    # Azure CLI - Official Installation Script
+    # https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux#option-1-install-with-one-command
+    - name: Install Azure CLI using official Microsoft script
+      become: true
+      ansible.builtin.shell: |
+        curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+      args:
+        creates: /usr/bin/az
+
+    # HashiCorp Tools - Terraform and Packer
+    # https://www.hashicorp.com/official-packaging-guide
+    - name: Install HashiCorp GPG key
+      become: true
+      ansible.builtin.shell: |
+        wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+      args:
+        creates: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+    - name: Remove old HashiCorp .list format if exists
+      become: true
+      ansible.builtin.file:
+        path: /etc/apt/sources.list.d/hashicorp.list
+        state: absent
+
+    - name: Remove old HashiCorp .asc keyring
+      become: true
+      ansible.builtin.file:
+        path: /usr/share/keyrings/hashicorp-archive-keyring.asc
+        state: absent
+
+    - name: Add HashiCorp repository (DEB822 format)
+      become: true
+      ansible.builtin.copy:
+        dest: /etc/apt/sources.list.d/hashicorp.sources
+        mode: '0644'
+        content: |
+          Types: deb
+          URIs: https://apt.releases.hashicorp.com
+          Suites: {{ ansible_distribution_release }}
+          Components: main
+          Signed-By: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+    - name: Install Terraform and Packer
+      become: true
+      ansible.builtin.apt:
+        name:
+          - terraform
+          - packer
+        state: present
+        update_cache: yes
+
+    # wslu - WSL Utilities
+    # https://github.com/wslutilities/wslu
+    - name: Remove orphaned wslu keyring (PPA manages its own)
+      become: true
+      ansible.builtin.file:
+        path: /usr/share/keyrings/wslutilities-archive-keyring.gpg
+        state: absent
+
+    - name: Add wslu PPA
+      become: true
+      ansible.builtin.shell: |
+        add-apt-repository -y ppa:wslutilities/wslu
+      args:
+        creates: /etc/apt/sources.list.d/wslutilities-ubuntu-wslu-{{ ansible_distribution_release }}.sources
+
+    - name: Install wslu
+      become: true
+      ansible.builtin.apt:
+        name: wslu
+        state: present
+        update_cache: yes
+
+    - name: Create WSL Interop fix systemd service
+      become: true
+      ansible.builtin.copy:
+        content: |
+          [Unit]
+          Description=Fix WSL Interop naming conflict for wslu utilities
+          After=systemd-binfmt.service
+          Wants=systemd-binfmt.service
+
+          [Service]
+          Type=oneshot
+          ExecStart=/bin/bash -c 'echo ":WSLInterop:M::MZ::/init:P" | tee /proc/sys/fs/binfmt_misc/register'
+          RemainAfterExit=yes
+
+          [Install]
+          WantedBy=multi-user.target
+        dest: /etc/systemd/system/wsl-interop-fix.service
+        mode: '0644'
+
+    - name: Enable and start WSL Interop fix service
+      become: true
+      ansible.builtin.systemd:
+        name: wsl-interop-fix.service
+        enabled: yes
+        state: started
+        daemon_reload: yes
 
     - name: Enable passwordless sudo
       become: true
@@ -117,3 +209,29 @@
             helper = store
           [init]
             defaultBranch = main
+
+    # Node.js via nvm and GitHub Copilot CLI
+    - name: Install nvm (Node Version Manager)
+      ansible.builtin.shell: |
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+      args:
+        creates: ~/.nvm/nvm.sh
+
+    - name: Install Node.js LTS via nvm
+      ansible.builtin.shell: |
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        nvm install --lts
+        nvm alias default lts/*
+      args:
+        executable: /bin/bash
+        creates: ~/.nvm/alias/default
+
+    - name: Install GitHub Copilot CLI
+      ansible.builtin.shell: |
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        npm install -g @github/copilot@latest
+      args:
+        executable: /bin/bash
+        creates: ~/.nvm/versions/node/*/bin/github-copilot-cli
