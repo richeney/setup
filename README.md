@@ -125,7 +125,6 @@
     # Editors & productivity
     winget install --exact --id XP9KHM4BK9FZ7Q --source msstore --accept-package-agreements # Visual Studio Code
     winget install --exact --id XP89DCGQ3K6VLD --source msstore --accept-package-agreements # PowerToys
-    winget install --exact --id "Obsidian.Obsidian" --silent
     winget install --exact --id "Notion.Notion" --silent
     winget install --exact --id "Espanso.Espanso" --silent
     winget install --exact --id "FilesCommunity.FilesPreview" --silent
