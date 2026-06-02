@@ -141,6 +141,7 @@
           - hugo
           - aha
           - unzip
+          - golang-go
 
     - name: Ansible .bashrc - root customisations
       become: true
@@ -234,4 +235,41 @@
         npm install -g @github/copilot@latest
       args:
         executable: /bin/bash
-        creates: ~/.nvm/versions/node/*/bin/github-copilot-cli
+        creates: ~/.nvm/versions/node/*/bin/copilot
+
+    # oh-my-posh - prompt theme engine
+    # https://ohmyposh.dev/docs/installation/linux
+    - name: Install oh-my-posh
+      ansible.builtin.shell: |
+        curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+      args:
+        creates: ~/.local/bin/oh-my-posh
+
+    # Bicep CLI (ARM64)
+    # https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/install#linux
+    - name: Create ~/.azure/bin directory
+      ansible.builtin.file:
+        path: ~/.azure/bin
+        state: directory
+        mode: '0755'
+
+    - name: Install Bicep CLI (ARM64)
+      ansible.builtin.get_url:
+        url: https://github.com/Azure/bicep/releases/latest/download/bicep-linux-arm64
+        dest: ~/.azure/bin/bicep
+        mode: '0755'
+
+    # PowerShell 7 (ARM64) for WSL2
+    # https://learn.microsoft.com/en-us/powershell/scripting/install/install-other-linux
+    - name: Install PowerShell 7 (ARM64)
+      become: true
+      ansible.builtin.shell: |
+        PWSH_VERSION=$(curl -s https://api.github.com/repos/PowerShell/PowerShell/releases/latest | grep '"tag_name"' | cut -d'"' -f4 | tr -d 'v')
+        curl -L -o /tmp/powershell.tar.gz "https://github.com/PowerShell/PowerShell/releases/download/v${PWSH_VERSION}/powershell-${PWSH_VERSION}-linux-arm64.tar.gz"
+        mkdir -p /opt/microsoft/powershell/7
+        tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7
+        chmod +x /opt/microsoft/powershell/7/pwsh
+        ln -sf /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
+        rm /tmp/powershell.tar.gz
+      args:
+        creates: /usr/bin/pwsh

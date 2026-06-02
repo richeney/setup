@@ -1,6 +1,6 @@
 # Setup
 
-## Ubuntu 20.04
+## Ubuntu 24.04
 
 * [Install WSL](https://aka.ms/installwsl2)
 
@@ -14,7 +14,7 @@
 
 * Customise
 
-    My personal bootstrap for a vanilla WSL2 installation of the Ubuntu 22.04 distro from the Microsoft Store.
+    My personal bootstrap for a vanilla WSL2 installation of the Ubuntu 24.04 distro from the Microsoft Store.
 
     ```bash
     bash <(curl -sSL https://raw.githubusercontent.com/richeney/setup/master/bootstrap.sh)
@@ -109,30 +109,40 @@
     ⚠️ Check the desktop - Reset my PC now adds a list of the software that was lost. Update the winget list below.
 
     ```powershell
-    winget install "Git.Git" --accept-source-agreements --accept-package-agreements --silent
-    winget install "GitHub.cli" --silent
+    # Dev tools
+    winget install --exact --id "Git.Git" --accept-source-agreements --accept-package-agreements --silent
+    winget install --exact --id "GitHub.cli" --silent
+    winget install --exact --id "GitHub.Copilot" --silent
     winget install --exact --id "Microsoft.AzureCLI" --silent
-    ## winget install "Microsoft.DotNet.Runtime.6" --silent
-    ## winget install "Microsoft.DotNet.Runtime.5" --silent
-    ## winget install "Microsoft.VC++2015-2022Redist-x64" --silent
+    winget install --exact --id "Microsoft.Azure.StorageExplorer" --silent
+    winget install --exact --id "Microsoft.Azure.FunctionsCoreTools" --silent
+    winget install --exact --id "Microsoft.devtunnel" --silent
+    winget install --exact --id "Microsoft.AzureVPNClient" --silent
+    winget install --exact --id "CoreyButler.NVMforWindows" --silent
+    winget install --exact --id "Python.Python.3.12" --silent
+    winget install --id Microsoft.Powershell --source winget --silent
+
+    # Editors & productivity
     winget install --exact --id XP9KHM4BK9FZ7Q --source msstore --accept-package-agreements # Visual Studio Code
-    ## winget install "Microsoft Remote Desktop" --source msstore --accept-package-agreements
-    winget install "PowerToys" --source msstore --accept-package-agreements
-    ## winget install "ShareX" --source msstore --accept-package-agreements
-    ## winget install "Ambie" --source winget
-    ## winget install "EarTrumpet" --source msstore --accept-package-agreements
-    ## winget install "NVIDIA Control Panel" --source msstore --accept-package-agreements
-    ## winget install "Nvidia.GeForceExperience"
-    ## winget install "Logitech.GHUB"
-    winget install "Logitech.LogiTune"
-    winget install --exact --id "Logitech.OptionsPlus"
+    winget install --exact --id XP89DCGQ3K6VLD --source msstore --accept-package-agreements # PowerToys
+    winget install --exact --id "Notion.Notion" --silent
+    winget install --exact --id "Espanso.Espanso" --silent
+    winget install --exact --id "FilesCommunity.FilesPreview" --silent
+    winget install --exact --id "Google.Chrome.EXE" --silent
+
+    # Hardware / peripherals
+    winget install --exact --id "Logitech.LogiTune" --silent
+    winget install --exact --id "Logitech.OptionsPlus" --silent
+    winget install --exact --id "Dell.DisplayAndPeripheralManager" --silent
+    winget install --exact --id "RODE.RODECentral" --silent
     winget install "HP Smart" --source msstore --accept-package-agreements
+
+    # Media & entertainment
     winget install "Netflix" --accept-package-agreements
     winget install "Amazon Prime" --accept-package-agreements
     winget install "Disney+" --accept-package-agreements
-    winget install "Tidal" --source msstore --accept-package-agreements
+    ## winget install "Tidal" --source msstore --accept-package-agreements
     winget install --exact --id 9NKSQGP7F2NH --source msstore --accept-package-agreements # WhatsApp
-    winget install --id Microsoft.Powershell --source winget
     ```
 
     Most of these will require authentication credentials and/or further configuration.
