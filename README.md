@@ -35,7 +35,9 @@
     Decision: keep this bootstrap as the default and use WSL Comfort as an **optional profile** when you want Starship + comfort-shell defaults.
 
     ```powershell
-    # run from a local clone of WindowsDeveloperConfig
+    # clone and run from a local checkout of WindowsDeveloperConfig
+    git clone https://github.com/microsoft/WindowsDeveloperConfig.git
+    cd .\WindowsDeveloperConfig
     .\wsl-comfort\install.ps1 -NonInteractive
     ```
 
