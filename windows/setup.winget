@@ -186,7 +186,7 @@ resources:
           $user = [Environment]::GetEnvironmentVariable('Path','User');
           $env:Path = (($machine, $user) | Where-Object { $_ }) -join ';';
           if (Get-Command tsc -ErrorAction SilentlyContinue) { exit 0 };
-          if (-not (Get-Command npm -ErrorAction SilentlyContinue)) { throw 'npm not found on PATH after Node install; cannot install typescript.' };
+          if (-not (Get-Command npm -ErrorAction SilentlyContinue)) { throw 'npm not found on PATH after Node install; cannot install TypeScript.' };
           & npm install --global --no-fund --no-audit typescript;
           if ($LASTEXITCODE -ne 0) { throw "npm install --global typescript failed with exit code $LASTEXITCODE" }
         treatAsArray: true
@@ -219,37 +219,10 @@ resources:
       source: winget
       acceptAgreements: true
 
-  - type: Microsoft.WinGet/Package
-    name: VisualStudioBuildTools
-    properties:
-      id: Microsoft.VisualStudio.2022.BuildTools
-      source: winget
-      acceptAgreements: true
-
-  - type: Microsoft.DSC.Transitional/RunCommandOnSet
-    name: VSBuildToolsVCWorkload
-    dependsOn:
-      - VisualStudioBuildTools
-    properties:
-      executable: powershell
-      arguments:
-        "0": -NoProfile
-        "1": -NoLogo
-        "2": -Command
-        "3": >-
-          $ErrorActionPreference = 'Stop';
-          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;
-          $bootstrapper = Join-Path $env:TEMP 'vs_BuildTools.exe';
-          Invoke-WebRequest -Uri 'https://aka.ms/vs/17/release/vs_BuildTools.exe' -OutFile $bootstrapper -UseBasicParsing;
-          $proc = Start-Process -FilePath $bootstrapper -ArgumentList @('--quiet','--wait','--norestart','--nocache','--add','Microsoft.VisualStudio.Workload.VCTools','--includeRecommended') -Wait -PassThru;
-          if ($proc.ExitCode -ne 0 -and $proc.ExitCode -ne 3010) { throw "vs_BuildTools.exe exited with code $($proc.ExitCode)" }
-        treatAsArray: true
-
   - type: Microsoft.DSC.Transitional/RunCommandOnSet
     name: InstallStableToolchain
     dependsOn:
       - Rustup
-      - VSBuildToolsVCWorkload
     properties:
       executable: powershell
       arguments:

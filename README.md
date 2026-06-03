@@ -25,7 +25,7 @@
     This repo now **selectively adopts** [WindowsDeveloperConfig](https://github.com/microsoft/WindowsDeveloperConfig):
 
     - ✅ Use `wsl-comfort` and language workloads
-    - ❌ Skip the full `windows-dev-config/dev-config.winget` baseline (too opinionated for this setup)
+    - ❌ Skip the full upstream `windows-dev-config/dev-config.winget` baseline (too opinionated for this setup)
 
     Overlap with this repo:
 
@@ -117,7 +117,7 @@
       - Node.js LTS + global TypeScript
       - Python 3.13 + `uv`
       - .NET SDK 10
-      - Rust (rustup stable + VS Build Tools VC workload)
+      - Rust (rustup stable)
       - Go
 
 * List installed apps
