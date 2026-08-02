@@ -1,0 +1,246 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json
+$schema: https://raw.githubusercontent.com/PowerShell/DSC/main/schemas/2023/08/config/document.json
+metadata:
+  winget:
+    processor: dscv3
+resources:
+  # Core dev tools
+  - type: Microsoft.WinGet/Package
+    name: Git
+    properties:
+      id: Git.Git
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: GitHubCli
+    properties:
+      id: GitHub.cli
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: GitHubCopilot
+    properties:
+      id: GitHub.Copilot
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: AzureCLI
+    properties:
+      id: Microsoft.AzureCLI
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: AzureStorageExplorer
+    properties:
+      id: Microsoft.Azure.StorageExplorer
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: AzureFunctionsCoreTools
+    properties:
+      id: Microsoft.Azure.FunctionsCoreTools
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: DevTunnel
+    properties:
+      id: Microsoft.devtunnel
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: AzureVpnClient
+    properties:
+      id: Microsoft.AzureVPNClient
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: NvmForWindows
+    properties:
+      id: CoreyButler.NVMforWindows
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: PowerShell
+    properties:
+      id: Microsoft.PowerShell
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: MicrosoftCoreutils
+    properties:
+      id: Microsoft.Coreutils
+      source: winget
+      acceptAgreements: true
+
+  # Editors & productivity
+  - type: Microsoft.WinGet/Package
+    name: VSCode
+    properties:
+      id: XP9KHM4BK9FZ7Q
+      source: msstore
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: PowerToys
+    properties:
+      id: XP89DCGQ3K6VLD
+      source: msstore
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: Notion
+    properties:
+      id: Notion.Notion
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: Espanso
+    properties:
+      id: Espanso.Espanso
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: FilesPreview
+    properties:
+      id: FilesCommunity.FilesPreview
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: Chrome
+    properties:
+      id: Google.Chrome.EXE
+      source: winget
+      acceptAgreements: true
+
+  # Hardware / peripherals
+  - type: Microsoft.WinGet/Package
+    name: LogiTune
+    properties:
+      id: Logitech.LogiTune
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: LogiOptionsPlus
+    properties:
+      id: Logitech.OptionsPlus
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: DellDisplayAndPeripheralManager
+    properties:
+      id: Dell.DisplayAndPeripheralManager
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: RodeCentral
+    properties:
+      id: RODE.RODECentral
+      source: winget
+      acceptAgreements: true
+
+  # Media & entertainment
+  - type: Microsoft.WinGet/Package
+    name: WhatsApp
+    properties:
+      id: 9NKSQGP7F2NH
+      source: msstore
+      acceptAgreements: true
+  # Keep HP Smart / Netflix / Amazon Prime / Disney+ as manual fallback installs in README
+
+  # Language workloads (WindowsDeveloperConfig-aligned)
+  - name: Node
+    type: Microsoft.WinGet/Package
+    properties:
+      id: OpenJS.NodeJS.LTS
+      source: winget
+      acceptAgreements: true
+
+  - name: InstallTypeScript
+    type: Microsoft.DSC.Transitional/RunCommandOnSet
+    dependsOn:
+      - Node
+    properties:
+      executable: powershell
+      arguments:
+        "0": -NoProfile
+        "1": -NoLogo
+        "2": -Command
+        "3": >-
+          $machine = [Environment]::GetEnvironmentVariable('Path','Machine');
+          $user = [Environment]::GetEnvironmentVariable('Path','User');
+          $env:Path = (($machine, $user) | Where-Object { $_ }) -join ';';
+          if (Get-Command tsc -ErrorAction SilentlyContinue) { exit 0 };
+          if (-not (Get-Command npm -ErrorAction SilentlyContinue)) { throw 'npm not found on PATH after Node install; cannot install TypeScript.' };
+          & npm install --global --no-fund --no-audit typescript;
+          if ($LASTEXITCODE -ne 0) { throw "npm install --global typescript failed with exit code $LASTEXITCODE" }
+        treatAsArray: true
+
+  - name: Python
+    type: Microsoft.WinGet/Package
+    properties:
+      id: Python.Python.3.13
+      source: winget
+      acceptAgreements: true
+
+  - name: Uv
+    type: Microsoft.WinGet/Package
+    properties:
+      id: astral-sh.uv
+      source: winget
+      acceptAgreements: true
+
+  - name: DotNetSdk
+    type: Microsoft.WinGet/Package
+    properties:
+      id: Microsoft.DotNet.SDK.10
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.WinGet/Package
+    name: Rustup
+    properties:
+      id: Rustlang.Rustup
+      source: winget
+      acceptAgreements: true
+
+  - type: Microsoft.DSC.Transitional/RunCommandOnSet
+    name: InstallStableToolchain
+    dependsOn:
+      - Rustup
+    properties:
+      executable: powershell
+      arguments:
+        "0": -NoProfile
+        "1": -NoLogo
+        "2": -Command
+        "3": >-
+          $machine = [Environment]::GetEnvironmentVariable('Path','Machine');
+          $user = [Environment]::GetEnvironmentVariable('Path','User');
+          $env:Path = (($machine, $user) | Where-Object { $_ }) -join ';';
+          if (-not (Get-Command rustup -ErrorAction SilentlyContinue)) { throw 'rustup not found on PATH after Rustup install; cannot install toolchain.' };
+          & rustup default stable;
+          if ($LASTEXITCODE -ne 0) { throw "rustup default stable failed with exit code $LASTEXITCODE" }
+        treatAsArray: true
+
+  - name: Go
+    type: Microsoft.WinGet/Package
+    properties:
+      id: GoLang.Go
+      source: winget
+      acceptAgreements: true

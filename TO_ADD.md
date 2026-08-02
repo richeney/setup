@@ -1,7 +1,7 @@
 # To Add
 
 * Docker
-* Go
+* Go ✅ (via `windows/setup.winget` workload)
 * Kind
 
 * azcopy

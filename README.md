@@ -20,6 +20,27 @@
     bash <(curl -sSL https://raw.githubusercontent.com/richeney/setup/master/bootstrap.sh)
     ```
 
+* WSL Comfort Shell (optional, alongside bootstrap)
+
+    This repo now **selectively adopts** [WindowsDeveloperConfig](https://github.com/microsoft/WindowsDeveloperConfig):
+
+    - ✅ Use `wsl-comfort` and language workloads
+    - ❌ Skip the full upstream `windows-dev-config/dev-config.winget` baseline (too opinionated for this setup)
+
+    Overlap with this repo:
+
+    - `playbook.yml` + `bashrc_user_customisations` already set up many CLI tools and shell tweaks
+    - this repo currently uses **Oh My Posh**; WSL Comfort uses **Starship**
+
+    Decision: keep this bootstrap as the default and use WSL Comfort as an **optional profile** when you want Starship + comfort-shell defaults.
+
+    ```powershell
+    # clone and run from a local checkout of WindowsDeveloperConfig
+    git clone https://github.com/microsoft/WindowsDeveloperConfig.git
+    cd .\WindowsDeveloperConfig
+    .\wsl-comfort\install.ps1 -NonInteractive
+    ```
+
 * Oh My Posh
 
     *Not working?*
@@ -79,6 +100,26 @@
      winget source update
      ```
 
+* Preferred install path: `winget configure`
+
+    Enable once, then apply the repo config:
+
+    ```powershell
+    winget configure --enable
+    winget configure -f .\windows\setup.winget --accept-configuration-agreements --disable-interactivity
+    ```
+
+    `.\windows\setup.winget` includes:
+
+    - existing Windows package baseline from this README
+    - `Microsoft.Coreutils`
+    - language workloads aligned to WindowsDeveloperConfig:
+      - Node.js LTS + global TypeScript
+      - Python 3.13 + `uv`
+      - .NET SDK 10
+      - Rust (rustup stable)
+      - Go
+
 * List installed apps
 
    ```powershell
@@ -104,7 +145,7 @@
     ## winget uninstall "Teams Machine-Wide Installer"
     ```
 
-* Install software
+* Install software (fallback/manual reference)
 
     ⚠️ Check the desktop - Reset my PC now adds a list of the software that was lost. Update the winget list below.
 
